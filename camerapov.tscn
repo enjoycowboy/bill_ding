@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkw5e2yj0x77y"]
+
+[ext_resource type="Script" path="res://scripts/camerapov.gd" id="1_qcc8a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20bx7"]
+albedo_color = Color(0.227451, 1, 1, 1)
+metallic = 0.78
+
+[node name="GimbalCamera" type="Node3D"]
+script = ExtResource("1_qcc8a")
+
+[node name="InnerAxis" type="Node3D" parent="."]
+
+[node name="myCamera" type="Camera3D" parent="InnerAxis"]
+transform = Transform3D(0.99792, -0.0134909, 0.0630432, -0.0258155, 0.812426, 0.582492, -0.0590763, -0.582908, 0.810388, 0.446116, 2.84312, 3.84783)
+current = true
+far = 400000.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0675107, 0.100895, 0.138904)
+gi_mode = 2
+gi_lightmap_scale = 2
+calculate_tangents = false
+cone = true
+material = SubResource("StandardMaterial3D_20bx7")
