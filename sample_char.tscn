@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ushhdwyyyis"]
+
+[ext_resource type="Script" path="res://scripts/collision_test.gd" id="1_rgsie"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mjeu5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a32f3"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_rgsie")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_mjeu5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_a32f3")
+
+[connection signal="ready" from="." to="." method="_on_ready"]

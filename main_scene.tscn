@@ -1,32 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo2r52qtyhe7c"]
+[gd_scene load_steps=4 format=3 uid="uid://bo2r52qtyhe7c"]
 
 [ext_resource type="PackedScene" uid="uid://bkw5e2yj0x77y" path="res://camerapov.tscn" id="1_hp2rk"]
 [ext_resource type="PackedScene" uid="uid://b34ls5y8jjguo" path="res://base_cell.tscn" id="2_jdxt5"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_k1ix7"]
-size = Vector3(5, 0.05, 5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udjo2"]
-albedo_color = Color(1, 0.513726, 1, 1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sexxn"]
-data = PackedVector3Array(-2.5, 0.025, 2.5, 2.5, 0.025, 2.5, -2.5, -0.025, 2.5, 2.5, 0.025, 2.5, 2.5, -0.025, 2.5, -2.5, -0.025, 2.5, 2.5, 0.025, -2.5, -2.5, 0.025, -2.5, 2.5, -0.025, -2.5, -2.5, 0.025, -2.5, -2.5, -0.025, -2.5, 2.5, -0.025, -2.5, 2.5, 0.025, 2.5, 2.5, 0.025, -2.5, 2.5, -0.025, 2.5, 2.5, 0.025, -2.5, 2.5, -0.025, -2.5, 2.5, -0.025, 2.5, -2.5, 0.025, -2.5, -2.5, 0.025, 2.5, -2.5, -0.025, -2.5, -2.5, 0.025, 2.5, -2.5, -0.025, 2.5, -2.5, -0.025, -2.5, 2.5, 0.025, 2.5, -2.5, 0.025, 2.5, 2.5, 0.025, -2.5, -2.5, 0.025, 2.5, -2.5, 0.025, -2.5, 2.5, 0.025, -2.5, -2.5, -0.025, 2.5, 2.5, -0.025, 2.5, -2.5, -0.025, -2.5, 2.5, -0.025, 2.5, 2.5, -0.025, -2.5, -2.5, -0.025, -2.5)
+[ext_resource type="Script" path="res://scripts/cell_logic.gd" id="3_47iq1"]
 
 [node name="mainScene" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 0, 0)
-mesh = SubResource("BoxMesh_k1ix7")
-surface_material_override/0 = SubResource("StandardMaterial3D_udjo2")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_sexxn")
-
 [node name="GimbalCamera" parent="." instance=ExtResource("1_hp2rk")]
 process_mode = 3
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 4, 3)
+visible = false
 
 [node name="BaseCell" parent="." instance=ExtResource("2_jdxt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+script = ExtResource("3_47iq1")
