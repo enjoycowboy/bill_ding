@@ -1,11 +1,9 @@
 extends CharacterBody3D
 
-
 var start_pos : Vector3
 var target_pos : Vector3
 var move_speed : float = 1
 var move_dir : Vector3
-
 
 func _on_ready():
 	move_dir = Vector3(randf_range(-10, 10), 1, randf_range(-10,10))
