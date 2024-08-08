@@ -47,13 +47,6 @@ func _go_north(new_cell, original_cell):
 	var mypos = original_cell.get_parent_node_3d().position
 	new_cell.translate(mypos+newpos)
 
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-=======
->>>>>>> Stashed changes
 func _go_south(new_cell, original_cell):
 	levels[SOUTH]+=1
 	var newpos = Vector3(-5.0,0.0,0.0)
