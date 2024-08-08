@@ -10,5 +10,27 @@ process_mode = 3
 transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, -5, 6, -1)
 visible = false
 
+<<<<<<< Updated upstream
+[node name="Floor" type="Node3D" parent="."]
+=======
+<<<<<<< HEAD
 [node name="RootCell" type="Node3D" parent="."]
+=======
+[node name="Floor" type="Node3D" parent="."]
+>>>>>>> wall_occlusion
+>>>>>>> Stashed changes
 script = ExtResource("3_47iq1")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -648.0
+offset_right = -576.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3

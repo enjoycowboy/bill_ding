@@ -46,7 +46,14 @@ func _go_north(new_cell, original_cell):
 	var newpos = Vector3(5.0,0.0,0.0)
 	var mypos = original_cell.get_parent_node_3d().position
 	new_cell.translate(mypos+newpos)
-	
+
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
+=======
+>>>>>>> Stashed changes
 func _go_south(new_cell, original_cell):
 	levels[SOUTH]+=1
 	var newpos = Vector3(-5.0,0.0,0.0)
@@ -87,9 +94,21 @@ func _physics_process(delta):
 						child.can_expand = false
 						_plop(newCell,child)
 						self.add_child(newCell)
-						print("Parent: ", node.global_position,", ",newCell.global_position)
-						
-						#	print("coll")
+						var overlaps = _cell_is_overlapping(newCell)
+						_unplop(overlaps)
 
-func _unplop(node):
+func _unplop(nodes):
+	print(nodes)
+	for node in nodes:
+		node.queue_free()
 	pass
+
+func _cell_is_overlapping(node):
+	var overlaps = []
+	var mypos = node.get_global_position
+	for child in node.get_parent_node_3d().get_children():
+		if child == node:
+			continue
+		if child.get_global_position() == node.get_global_position():
+			overlaps.append(child)
+	return overlaps
