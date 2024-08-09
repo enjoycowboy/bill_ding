@@ -12,8 +12,24 @@ config_version=5
 
 config/name="bill_ding"
 run/main_scene="res://main_scene.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/initial_position_type=2
+
+[dotnet]
+
+project/assembly_name="bill_ding"
+
+[editor]
+
+movie_writer/movie_file="/home/enjoy/bill_ding/movietest.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/blender_godot_pipeline/plugin.cfg", "res://addons/pawn/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [input]
 

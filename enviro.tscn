@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bacrtjb0gkks6"]
+
+[ext_resource type="PackedScene" uid="uid://8ogv7r6rto37" path="res://addons/GodotWeatherSystem/nodes/world_environment.tscn" id="1_xkjib"]
+[ext_resource type="PackedScene" uid="uid://da2i62hjyc1cp" path="res://addons/GodotWeatherSystem/weather_controller.tscn" id="2_e36n8"]
+
+[sub_resource type="Animation" id="Animation_mjkg0"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_o1trx"]
+resource_name = "day-night"
+length = 10.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jw5je"]
+_data = {
+"RESET": SubResource("Animation_mjkg0"),
+"day-night": SubResource("Animation_o1trx")
+}
+
+[node name="Enviro" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jw5je")
+}
+speed_scale = 3.537
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_xkjib")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="WeatherController" parent="." instance=ExtResource("2_e36n8")]

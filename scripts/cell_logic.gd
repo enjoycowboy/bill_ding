@@ -40,7 +40,10 @@ func _plop(new_cell, original_cell):
 				if original_cell.name == opposite_of(new_wall.name):
 					original_cell.visible=false
 			_go_east(new_cell, original_cell)
-
+	var overlaps = _cell_is_overlapping(new_cell)
+	if overlaps:
+		print(overlaps)
+		_unplop(overlaps)
 func _go_north(new_cell, original_cell):
 	levels[NORTH]+=1
 	var newpos = Vector3(5.0,0.0,0.0)
@@ -88,10 +91,9 @@ func _physics_process(delta):
 						_plop(newCell,child)
 						self.add_child(newCell)
 						var overlaps = _cell_is_overlapping(newCell)
-						_unplop(overlaps)
+						#_unplop(overlaps)
 
 func _unplop(nodes):
-	print(nodes)
 	for node in nodes:
 		node.queue_free()
 	pass
@@ -99,8 +101,8 @@ func _unplop(nodes):
 func _cell_is_overlapping(node):
 	var overlaps = []
 	var mypos = node.get_global_position
-	for child in node.get_parent_node_3d().get_children():
-		if child == node:
+	for child in get_children():
+		if child.name == node.name:
 			continue
 		if child.get_global_position() == node.get_global_position():
 			overlaps.append(child)
