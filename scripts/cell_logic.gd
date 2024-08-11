@@ -4,6 +4,7 @@ const EAST = 1 # +x
 const SOUTH = 2 # -z
 const WEST = 3 # -x
 var levels = [0,0,0,0]
+var cell_coord_dict = {};
 const BaseCell = preload("res://base_cell.tscn")
 func _ready():
 	if BaseCell.can_instantiate():
@@ -40,10 +41,13 @@ func _plop(new_cell, original_cell):
 				if original_cell.name == opposite_of(new_wall.name):
 					original_cell.visible=false
 			_go_east(new_cell, original_cell)
+	var dict = {new_cell: new_cell.global_position}
+	cell_coord_dict.merge(dict)
 	var overlaps = _cell_is_overlapping(new_cell)
 	if overlaps:
-		print(overlaps)
 		_unplop(overlaps)
+		
+
 func _go_north(new_cell, original_cell):
 	levels[NORTH]+=1
 	var newpos = Vector3(5.0,0.0,0.0)
@@ -95,15 +99,13 @@ func _physics_process(delta):
 
 func _unplop(nodes):
 	for node in nodes:
+		print("freeing ", node)
 		node.queue_free()
 	pass
 
 func _cell_is_overlapping(node):
 	var overlaps = []
-	var mypos = node.get_global_position
-	for child in get_children():
-		if child.name == node.name:
-			continue
-		if child.get_global_position() == node.get_global_position():
-			overlaps.append(child)
+	for cell in cell_coord_dict:
+		if cell_coord_dict[cell] == node.position:
+			overlaps.append(node)
 	return overlaps
