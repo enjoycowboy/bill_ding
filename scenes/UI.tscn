@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://sgud4gifcl32"]
+[gd_scene load_steps=2 format=3 uid="uid://sgud4gifcl32"]
+
+[ext_resource type="Script" path="res://scripts/Placer.gd" id="1_mhabh"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,6 +13,7 @@ offset_right = 1.0
 offset_bottom = -79.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mhabh")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -27,13 +30,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="GridContainer/Panel"]
+[node name="basecell" type="Button" parent="GridContainer/Panel" node_paths=PackedStringArray("shortcut_context")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+shortcut_context = NodePath(".")
 text = "Place Empty Room"
 
 [node name="Panel3" type="Panel" parent="GridContainer"]
@@ -41,7 +45,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="GridContainer/Panel3"]
+[node name="stairs" type="Button" parent="GridContainer/Panel3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +59,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="GridContainer/Panel4"]
+[node name="elevator" type="Button" parent="GridContainer/Panel4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,7 +73,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="GridContainer/Panel5"]
+[node name="del" type="Button" parent="GridContainer/Panel5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,7 +87,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="GridContainer/Panel2"]
+[node name="timescale" type="Button" parent="GridContainer/Panel2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,3 +95,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Time Scale"
+
+[connection signal="pressed" from="GridContainer/Panel/basecell" to="." method="_on_basecell_pressed"]
+[connection signal="pressed" from="GridContainer/Panel3/stairs" to="." method="_on_stairs_pressed"]
+[connection signal="pressed" from="GridContainer/Panel4/elevator" to="." method="_on_elevator_pressed"]
+[connection signal="pressed" from="GridContainer/Panel5/del" to="." method="_on_del_pressed"]
+[connection signal="pressed" from="GridContainer/Panel2/timescale" to="." method="_on_button_pressed"]

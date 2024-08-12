@@ -2,6 +2,8 @@ extends Node3D
 var selectable = true;
 var click_count = 0;
 var can_expand = false;
+var deletable = false;
+var uilayer
 
 func _on_static_body_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
@@ -10,14 +12,15 @@ func _on_static_body_3d_input_event(camera, event, position, normal, shape_idx):
 			self.visible = !self.visible
 
 		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			click_count+=1;
-			if click_count == 1:
+			if uilayer.command == "del":
+				deletable = !deletable
+			else:
 				can_expand = true;
-			if click_count == 2:
-				can_expand = false;
-				click_count =0;
 			
 func _ready():
+	var root = get_node("/root/mainScene")
+	uilayer = root.get_node("/root/mainScene/interface")
+
 	pass
 
 func _physics_process(delta):
