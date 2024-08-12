@@ -5,7 +5,7 @@ const SOUTH = 2 # -z
 const WEST = 3 # -x
 var levels = [0,0,0,0]
 var cell_coord_dict = {};
-const BaseCell = preload("res://base_cell.tscn")
+const BaseCell = preload("res://scenes/base_cell.tscn")
 func _ready():
 	if BaseCell.can_instantiate():
 		var base = BaseCell.instantiate()

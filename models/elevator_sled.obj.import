@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bhnq80sh58ueh"
+path="res://.godot/imported/elevator_sled.obj-27e365f22a9b4801dfb468b5bbbec371.mesh"
+
+[deps]
+
+files=["res://.godot/imported/elevator_sled.obj-27e365f22a9b4801dfb468b5bbbec371.mesh"]
+
+source_file="res://models/elevator_sled.obj"
+dest_files=["res://.godot/imported/elevator_sled.obj-27e365f22a9b4801dfb468b5bbbec371.mesh", "res://.godot/imported/elevator_sled.obj-27e365f22a9b4801dfb468b5bbbec371.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

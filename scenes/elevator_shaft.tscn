@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://pjjmh5047p2x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfng5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87pfp"]
+transparency = 1
+albedo_color = Color(0.716086, 0.720773, 0.730139, 1)
+albedo_texture = SubResource("AtlasTexture_jfng5")
+albedo_texture_force_srgb = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_htija"]
+material = SubResource("StandardMaterial3D_87pfp")
+uv2_padding = 4.16
+size = Vector3(0.1, 3, 5)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4ajok"]
+data = PackedVector3Array(-0.05, 1.5, 2.5, 0.05, 1.5, 2.5, -0.05, -1.5, 2.5, 0.05, 1.5, 2.5, 0.05, -1.5, 2.5, -0.05, -1.5, 2.5, 0.05, 1.5, -2.5, -0.05, 1.5, -2.5, 0.05, -1.5, -2.5, -0.05, 1.5, -2.5, -0.05, -1.5, -2.5, 0.05, -1.5, -2.5, 0.05, 1.5, 2.5, 0.05, 1.5, -2.5, 0.05, -1.5, 2.5, 0.05, 1.5, -2.5, 0.05, -1.5, -2.5, 0.05, -1.5, 2.5, -0.05, 1.5, -2.5, -0.05, 1.5, 2.5, -0.05, -1.5, -2.5, -0.05, 1.5, 2.5, -0.05, -1.5, 2.5, -0.05, -1.5, -2.5, 0.05, 1.5, 2.5, -0.05, 1.5, 2.5, 0.05, 1.5, -2.5, -0.05, 1.5, 2.5, -0.05, 1.5, -2.5, 0.05, 1.5, -2.5, -0.05, -1.5, 2.5, 0.05, -1.5, 2.5, -0.05, -1.5, -2.5, 0.05, -1.5, 2.5, 0.05, -1.5, -2.5, -0.05, -1.5, -2.5)
+
+[node name="BaseCell" type="Node3D" groups=["Wall"]]
+
+[node name="NorthWall" type="Node3D" parent="." groups=["Wall"]]
+
+[node name="WallN" type="MeshInstance3D" parent="NorthWall" groups=["Wall"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45, 1.5, 0)
+mesh = SubResource("BoxMesh_htija")
+
+[node name="StaticBody3D" type="AnimatableBody3D" parent="NorthWall/WallN" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NorthWall/WallN/StaticBody3D" groups=["Wall"]]
+shape = SubResource("ConcavePolygonShape3D_4ajok")
+
+[node name="WestWall" type="Node3D" parent="." groups=["Wall"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="WallW" type="MeshInstance3D" parent="WestWall" groups=["Wall"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45, 1.5, 0)
+mesh = SubResource("BoxMesh_htija")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WestWall/WallW" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WestWall/WallW/StaticBody3D" groups=["Wall"]]
+shape = SubResource("ConcavePolygonShape3D_4ajok")
+
+[node name="EastWall" type="Node3D" parent="." groups=["Wall"]]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="WallE" type="MeshInstance3D" parent="EastWall" groups=["Wall"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45, 1.5, 0)
+mesh = SubResource("BoxMesh_htija")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="EastWall/WallE" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EastWall/WallE/StaticBody3D" groups=["Wall"]]
+shape = SubResource("ConcavePolygonShape3D_4ajok")
+
+[node name="SouthWall" type="Node3D" parent="." groups=["Wall"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="WallS" type="MeshInstance3D" parent="SouthWall" groups=["Wall"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45, 1.5, 0)
+mesh = SubResource("BoxMesh_htija")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SouthWall/WallS" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthWall/WallS/StaticBody3D" groups=["Wall"]]
+shape = SubResource("ConcavePolygonShape3D_4ajok")
+
+[node name="FloorNode" type="Node3D" parent="." groups=["Wall"]]
+
+[connection signal="input_event" from="NorthWall/WallN/StaticBody3D" to="NorthWall" method="_on_static_body_3d_input_event"]
+[connection signal="input_event" from="WestWall/WallW/StaticBody3D" to="WestWall" method="_on_static_body_3d_input_event"]
+[connection signal="mouse_entered" from="WestWall/WallW/StaticBody3D" to="WestWall" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="WestWall/WallW/StaticBody3D" to="WestWall" method="_on_static_body_3d_mouse_exited"]
+[connection signal="input_event" from="EastWall/WallE/StaticBody3D" to="EastWall" method="_on_static_body_3d_input_event"]
+[connection signal="mouse_entered" from="EastWall/WallE/StaticBody3D" to="EastWall" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="EastWall/WallE/StaticBody3D" to="EastWall" method="_on_static_body_3d_mouse_exited"]
+[connection signal="input_event" from="SouthWall/WallS/StaticBody3D" to="SouthWall" method="_on_static_body_3d_input_event"]
+[connection signal="mouse_entered" from="SouthWall/WallS/StaticBody3D" to="SouthWall" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="SouthWall/WallS/StaticBody3D" to="SouthWall" method="_on_static_body_3d_mouse_exited"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo2r52qtyhe7c"]
+
+[ext_resource type="PackedScene" uid="uid://bkw5e2yj0x77y" path="res://scenes/camerapov.tscn" id="1_hp2rk"]
+[ext_resource type="Script" path="res://scripts/cell_logic.gd" id="3_47iq1"]
+[ext_resource type="PackedScene" uid="uid://da2i62hjyc1cp" path="res://addons/GodotWeatherSystem/weather_controller.tscn" id="3_eamx0"]
+[ext_resource type="PackedScene" uid="uid://sgud4gifcl32" path="res://scenes/UI.tscn" id="4_kvvil"]
+
+[node name="mainScene" type="Node3D"]
+
+[node name="GimbalCamera" parent="." instance=ExtResource("1_hp2rk")]
+process_mode = 3
+transform = Transform3D(-2.62268e-08, -8.88178e-16, -0.6, 0, 0.6, 1.77636e-15, 0.6, 0, -2.62268e-08, -5, 6, -1)
+visible = false
+
+[node name="WeatherController" parent="." instance=ExtResource("3_eamx0")]
+timeSpeedMultiplier = 1000.0
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="Floor" type="Node3D" parent="Building"]
+script = ExtResource("3_47iq1")
+
+[node name="Control" parent="." instance=ExtResource("4_kvvil")]
