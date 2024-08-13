@@ -20,8 +20,21 @@ func _on_static_body_3d_input_event(camera, event, position, normal, shape_idx):
 func _ready():
 	var root = get_node("/root/mainScene")
 	uilayer = root.get_node("/root/mainScene/interface")
-
 	pass
 
 func _physics_process(delta):
 	pass
+
+
+func _on_static_body_3d_mouse_entered():
+	var nodes = self.get_children()
+	for node in nodes:
+		node.set_transparency(0.9)
+	pass # Replace with function body.
+
+
+func _on_static_body_3d_mouse_exited():
+	var nodes = get_children()
+	for node in nodes:
+		node.set_transparency(0.0)
+	pass # Replace with function body.

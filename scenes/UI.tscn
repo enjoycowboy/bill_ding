@@ -17,13 +17,15 @@ script = ExtResource("1_mhabh")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = -1
+anchor_top = 0.689
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.208
+offset_top = 37.009
+offset_bottom = -24.752
 grow_horizontal = 2
 grow_vertical = 0
-columns = 5
+columns = 6
 
 [node name="Panel" type="Panel" parent="GridContainer"]
 layout_mode = 2
@@ -96,8 +98,24 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Time Scale"
 
+[node name="Panel6" type="Panel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="newfloor" type="Button" parent="GridContainer/Panel6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Add Floor
+"
+
 [connection signal="pressed" from="GridContainer/Panel/basecell" to="." method="_on_basecell_pressed"]
 [connection signal="pressed" from="GridContainer/Panel3/stairs" to="." method="_on_stairs_pressed"]
 [connection signal="pressed" from="GridContainer/Panel4/elevator" to="." method="_on_elevator_pressed"]
 [connection signal="pressed" from="GridContainer/Panel5/del" to="." method="_on_del_pressed"]
 [connection signal="pressed" from="GridContainer/Panel2/timescale" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GridContainer/Panel6/newfloor" to="." method="_on_newfloor_pressed"]

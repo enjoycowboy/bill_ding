@@ -1,9 +1,18 @@
 [gd_scene load_steps=2 format=3 uid="uid://dq13nbw0nvjgx"]
 
-[ext_resource type="ArrayMesh" uid="uid://ba1383hd8we2g" path="res://stairs.obj" id="1_8yely"]
+[ext_resource type="ArrayMesh" uid="uid://swqj55ayy2bu" path="res://models/stairs.obj" id="1_cfljr"]
 
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 5, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.04907e-07, 0, -1, 0, 1, 0, 2.4, 0, -4.37114e-08, 5, 0, 0)
-mesh = ExtResource("1_8yely")
+mesh = ExtResource("1_cfljr")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(2, -8.74228e-08, -3.82137e-15, 0, -8.74228e-08, 2, -8.74228e-08, -2, -8.74228e-08, 0, 11, 0)
+light_energy = 25.0
+light_indirect_energy = 7.855
+light_size = 0.96
+light_specular = 2.555
+spot_range = 11.0
+spot_angle = 89.99
