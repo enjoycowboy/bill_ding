@@ -120,6 +120,8 @@ mesh = SubResource("BoxMesh_v34vd")
 shape = SubResource("ConcavePolygonShape3D_xxt60")
 
 [connection signal="input_event" from="NorthWall/WallN/StaticBody3D" to="NorthWall" method="_on_static_body_3d_input_event"]
+[connection signal="mouse_entered" from="NorthWall/WallN/StaticBody3D" to="NorthWall" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="NorthWall/WallN/StaticBody3D" to="NorthWall" method="_on_static_body_3d_mouse_exited"]
 [connection signal="input_event" from="WestWall/WallW/StaticBody3D" to="WestWall" method="_on_static_body_3d_input_event"]
 [connection signal="mouse_entered" from="WestWall/WallW/StaticBody3D" to="WestWall" method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="WestWall/WallW/StaticBody3D" to="WestWall" method="_on_static_body_3d_mouse_exited"]
@@ -129,3 +131,5 @@ shape = SubResource("ConcavePolygonShape3D_xxt60")
 [connection signal="input_event" from="SouthWall/WallS/StaticBody3D" to="SouthWall" method="_on_static_body_3d_input_event"]
 [connection signal="mouse_entered" from="SouthWall/WallS/StaticBody3D" to="SouthWall" method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="SouthWall/WallS/StaticBody3D" to="SouthWall" method="_on_static_body_3d_mouse_exited"]
+[connection signal="mouse_entered" from="FloorNode/Floor/StaticBody3D" to="FloorNode" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="FloorNode/Floor/StaticBody3D" to="FloorNode" method="_on_static_body_3d_mouse_exited"]
